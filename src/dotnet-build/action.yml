@@ -38,7 +38,7 @@ runs:
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
       with:
-        name: package
+        name: app-package
         path: ${{ env.BUILD_OUTPUT_PATH }}
         if-no-files-found: error
         retention-days: 1
