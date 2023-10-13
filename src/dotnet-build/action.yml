@@ -15,6 +15,7 @@ runs:
   using: "composite"
   steps:
     - run: echo "BUILD_OUTPUT_PATH=./output" >> $GITHUB_ENV
+      shell: bash
 
     - name: Checkout repository
       uses: actions/checkout@v4
