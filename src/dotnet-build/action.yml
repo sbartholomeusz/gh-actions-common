@@ -1,5 +1,5 @@
-name: 'Build a .NET serverless function'
-description: 'Build a .NET serverless function'
+name: dotnet-build
+description: 'Build dotnet project'
 
 defaults:
   run:
@@ -7,17 +7,13 @@ defaults:
 
 inputs:
   dotnet_version:
-    description: 'The .NET version'
+    description: 'Required dotnet version'
     required: false
     default: '7.x'
   project_path:
-    description: 'The path to your web app project, defaults to the repository root'
+    description: 'Path to your project'
     required: false
     default: '.'
-  build_command:
-    description: 'The command to build the .NET project'
-    required: false
-    default: 'dotnet build --configuration Release -o output'
 
 runs:
   using: "composite"
