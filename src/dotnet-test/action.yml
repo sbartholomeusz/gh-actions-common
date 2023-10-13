@@ -5,6 +5,10 @@ inputs:
   dotnet_version:
     description: 'Required dotnet version e.g. "7.x"'
     required: true
+  path:
+    description: 'Path to project or solution e.g. "./my-solution.sln"'
+    required: false
+    default: '.'
   app_artifact_name:
     description: 'Name of the artifact containing the application package'
     required: false
@@ -24,13 +28,14 @@ runs:
       with:
         dotnet-version: ${{ inputs.dotnet_version }}
 
-    - name: Download application package
-      uses: actions/download-artifact@v3
-      with:
-        name: ${{ inputs.app_artifact_name }}
-        path: ${{ env.APP_PACKAGE_PATH }}
+    - name: Restore dependencies
+      shell: bash
+      run: dotnet restore ${{ inputs.path }}
+
+    - name: Build
+      shell: bash
+      run: dotnet build ${{ inputs.path }} --configuration Release --no-restore
 
     - name: Test
       shell: bash
-      run: dotnet test --configuration Release --no-build --no-restore
-      working-directory: ${{ env.APP_PACKAGE_PATH }}
+      run: dotnet test ${{ inputs.path }} --configuration Release --no-build --no-restore
