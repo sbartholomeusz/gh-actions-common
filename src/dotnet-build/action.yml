@@ -1,10 +1,6 @@
 name: dotnet-build
 description: 'Build dotnet project'
 
-defaults:
-  run:
-    shell: bash
-
 inputs:
   dotnet_version:
     description: 'Required dotnet version'
@@ -29,10 +25,14 @@ runs:
         dotnet-version: ${{ inputs.dotnet_version }}
 
     - name: Restore dependencies
+      shell: bash
       run: dotnet restore
+      working-directory: ${{ inputs.project_path }}
 
     - name: Build
-      run: dotnet build ${{ inputs.project_path }} --configuration Release --no-restore --output ${{ env.BUILD_OUTPUT_PATH }}
+      shell: bash
+      run: dotnet build --configuration Release --no-restore --output ${{ env.BUILD_OUTPUT_PATH }}
+      working-directory: ${{ inputs.project_path }}
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v4
