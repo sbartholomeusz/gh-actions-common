@@ -3,9 +3,8 @@ description: 'Build dotnet project'
 
 inputs:
   dotnet_version:
-    description: 'Required dotnet version'
-    required: false
-    default: '7.x'
+    description: 'Required dotnet version e.g. "7.x"'
+    required: true
   project_path:
     description: 'Path to your project'
     required: false
@@ -27,13 +26,11 @@ runs:
 
     - name: Restore dependencies
       shell: bash
-      run: dotnet restore
-      working-directory: ${{ inputs.project_path }}
+      run: dotnet restore ${{ inputs.project_path }}
 
     - name: Build
       shell: bash
-      run: dotnet build --configuration Release --no-restore --output ${{ env.BUILD_OUTPUT_PATH }}
-      working-directory: ${{ inputs.project_path }}
+      run: dotnet build ${{ inputs.project_path }} --configuration Release --no-restore --output ${{ env.BUILD_OUTPUT_PATH }}
 
     - name: Upload build artifacts
       uses: actions/upload-artifact@v3
