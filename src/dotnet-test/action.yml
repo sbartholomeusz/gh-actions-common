@@ -1,0 +1,41 @@
+name: dotnet-build
+description: 'Test dotnet project'
+
+inputs:
+  dotnet_version:
+    description: 'Required dotnet version'
+    required: false
+    default: '7.x'
+  project_path:
+    description: 'Path to your project'
+    required: false
+    default: '.'
+  app_artifact_name:
+    description: 'Name of the artifact containing the application package'
+    required: false
+    default: 'app-package'
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo "APP_PACKAGE_PATH=./output" >> $GITHUB_ENV
+      shell: bash
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ inputs.dotnet_version }}
+
+    - name: Download application package
+      uses: actions/download-artifact@v4
+      with:
+        name: ${{ inputs.app_artifact_name }}
+        path: ${{ env.APP_PACKAGE_PATH }}
+
+    - name: Test
+      shell: bash
+      run: dotnet test --configuration Release --no-build
+      working-directory: ${{ env.APP_PACKAGE_PATH }}
