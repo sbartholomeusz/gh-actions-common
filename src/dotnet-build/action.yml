@@ -6,7 +6,7 @@ inputs:
     description: 'Required dotnet version e.g. "7.x"'
     required: true
   project_path:
-    description: 'Path to your project'
+    description: 'Path to project e.g. "./my-proj.csproj"'
     required: false
     default: '.'
 

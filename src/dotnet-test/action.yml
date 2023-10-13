@@ -6,10 +6,6 @@ inputs:
     description: 'Required dotnet version'
     required: false
     default: '7.x'
-  project_path:
-    description: 'Path to your project'
-    required: false
-    default: '.'
   app_artifact_name:
     description: 'Name of the artifact containing the application package'
     required: false
@@ -37,5 +33,5 @@ runs:
 
     - name: Test
       shell: bash
-      run: dotnet test --configuration Release --no-build
+      run: dotnet test --configuration Release --no-build --no-restore
       working-directory: ${{ env.APP_PACKAGE_PATH }}
