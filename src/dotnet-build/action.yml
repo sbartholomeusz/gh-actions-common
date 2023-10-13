@@ -36,7 +36,7 @@ runs:
       working-directory: ${{ inputs.project_path }}
 
     - name: Upload build artifacts
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v3
       with:
         name: app-package
         path: ${{ env.BUILD_OUTPUT_PATH }}
