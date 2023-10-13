@@ -1,0 +1,47 @@
+name: 'Build a .NET serverless function'
+description: 'Build a .NET serverless function'
+
+defaults:
+  run:
+    shell: bash
+
+inputs:
+  dotnet_version:
+    description: 'The .NET version'
+    required: false
+    default: '7.x'
+  project_path:
+    description: 'The path to your web app project, defaults to the repository root'
+    required: false
+    default: '.'
+  build_command:
+    description: 'The command to build the .NET project'
+    required: false
+    default: 'dotnet build --configuration Release -o output'
+
+runs:
+  using: "composite"
+  steps:
+    - run: echo "BUILD_OUTPUT_PATH=./output" >> $GITHUB_ENV
+
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: ${{ inputs.dotnet_version }}
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet publish ${{ inputs.project_path }} --configuration Release --no-restore --output ${{ env.BUILD_OUTPUT_PATH }}
+
+    - name: Upload build artifacts
+      uses: actions/upload-artifact@v4
+      with:
+        name: package
+        path: ${{ env.BUILD_OUTPUT_PATH }}
+        if-no-files-found: error
+        retention-days: 1
