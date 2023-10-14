@@ -17,6 +17,9 @@ jobs:
       # Required to publish release artifacts
       contents: write
     steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
       - name: Increment release version
         id: versioner
         run: echo "::set-output name=new_ver_number::$(date +'%-Y.%-m.%-d').$GITHUB_RUN_NUMBER"
