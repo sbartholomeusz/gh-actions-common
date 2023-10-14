@@ -1,0 +1,29 @@
+name: dotnet-release
+
+# 
+# Purpose: Create GitHub Release containing source code
+#
+
+on:
+  workflow_call:
+
+env:
+  BUILD_OUTPUT_PATH: './output'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      # Required to publish release artifacts
+      contents: write
+    steps:
+      - name: Increment release version
+        id: versioner
+        run: echo "::set-output name=new_ver_number::$(date +'%-Y.%-m.%-d').$GITHUB_RUN_NUMBER"
+
+      - name: Publish release
+        run: |
+          version=v${{ steps.versioner.outputs.new_ver_number }}
+          gh release create ${version} --title ${version} --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
