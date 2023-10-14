@@ -1,5 +1,9 @@
 name: dotnet-test
 
+# 
+# Purpose: Run dotnet tests
+#
+
 on:
   workflow_call:
     inputs:

@@ -1,5 +1,9 @@
 name: dotnet-build
 
+# 
+# Purpose: Build dotnet source code
+#
+
 on:
   workflow_call:
     inputs:
