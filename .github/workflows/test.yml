@@ -22,9 +22,6 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "APP_PACKAGE_PATH=./output" >> $GITHUB_ENV
-        shell: bash
-
       - name: Checkout repository
         uses: actions/checkout@v4
 

@@ -1,5 +1,4 @@
 name: dotnet-build
-description: 'Build dotnet project'
 
 on:
   workflow_call:
@@ -14,13 +13,13 @@ on:
         required: false
         default: '.'
 
+env:
+  BUILD_OUTPUT_PATH: './output'
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "BUILD_OUTPUT_PATH=./output" >> $GITHUB_ENV
-        shell: bash
-
       - name: Checkout repository
         uses: actions/checkout@v4
 
