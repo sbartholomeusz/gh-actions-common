@@ -12,7 +12,7 @@ on:
         required: false
         default: '.'
 
-runs:
+jobs:
   steps:
     - run: echo "BUILD_OUTPUT_PATH=./output" >> $GITHUB_ENV
       shell: bash
