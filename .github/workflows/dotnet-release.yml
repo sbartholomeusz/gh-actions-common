@@ -19,14 +19,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
-      - name: Increment release version
-        id: versioner
-        run: echo "::set-output name=new_ver_number::$(date +'%-Y.%-m.%-d').$GITHUB_RUN_NUMBER"
+        
+      # - name: Increment release version
+      #   id: versioner
+      #   run: echo "::set-output name=new_ver_number::$(date +'%-Y.%-m.%-d').$GITHUB_RUN_NUMBER"
 
       - name: Publish release
+        shell: bash
         run: |
-          version=v${{ steps.versioner.outputs.new_ver_number }}
+          version=v$(date +'%-Y.%-m.%-d').${{ github.run_number }}
           gh release create ${version} --title ${version} --generate-notes
         env:
           GITHUB_TOKEN: ${{ github.token }}
