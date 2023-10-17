@@ -1,8 +1,8 @@
-name: dotnet-release
-
 # 
 # Purpose: Create GitHub Release containing source code
 #
+
+name: dotnet-release
 
 on:
   workflow_call:

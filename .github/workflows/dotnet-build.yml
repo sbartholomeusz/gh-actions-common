@@ -1,8 +1,8 @@
-name: dotnet-build
-
 # 
 # Purpose: Build dotnet source code
 #
+
+name: dotnet-build
 
 on:
   workflow_call:

@@ -1,8 +1,8 @@
-name: dotnet-test
-
 # 
 # Purpose: Run dotnet tests
 #
+
+name: dotnet-test
 
 on:
   workflow_call:
