@@ -16,6 +16,11 @@ on:
         description: 'Path to project or solution e.g. "./my-solution.sln"'
         required: false
         default: '.'
+      os-platform:
+        type: string
+        description: 'Operating system platform e.g. "windows-latest"'
+        required: false
+        default: 'ubuntu-latest'
       app_artifact_name:
         type: string
         description: 'Name of the artifact containing the application package'
@@ -24,7 +29,7 @@ on:
 
 jobs:
   run-tests:
-    runs-on: ubuntu-latest
+    runs-on: ${{ inputs.os-platform }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
