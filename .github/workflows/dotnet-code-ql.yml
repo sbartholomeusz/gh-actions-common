@@ -1,6 +1,13 @@
 # 
 # Purpose: Analyse source code quality
 #
+# Permissions: Requires the following permissions
+#              * actions: read
+#              * contents: read
+#              * security-events: write
+#
+# --------------------------------------
+#
 # For most projects, this workflow file will not need changing; you simply need
 # to commit it to your repository.
 #
@@ -23,19 +30,19 @@ on:
         required: true
       path:
         type: string
-        description: 'Path to project or solution"'
+        description: 'Path to source code"'
         required: false
         default: '.'
-      os-platform:
+      os_platform:
         type: string
-        description: 'Operating system platform e.g. "windows-latest"'
+        description: 'Operating system platform e.g. "windows-latest". See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.'
         required: false
         default: 'ubuntu-latest'
 
 jobs:
   analyze:
     name: Analyze
-    runs-on: ${{ inputs.os-platform }}
+    runs-on: ${{ inputs.os_platform }}
     permissions:
       actions: read
       contents: read

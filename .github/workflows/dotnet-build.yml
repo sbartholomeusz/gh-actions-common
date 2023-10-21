@@ -14,20 +14,24 @@ on:
       project_path:
         type: string
         description: 'Path to project e.g. "./my-proj.csproj"'
-        required: false
-        default: '.'
-      os-platform:
+        required: true
+      os_platform:
         type: string
-        description: 'Operating system platform e.g. "windows-latest"'
+        description: 'Operating system platform e.g. "windows-latest". See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.'
         required: false
         default: 'ubuntu-latest'
+      app_artifact_name:
+        type: string
+        description: 'Name of the uploaded build artifact'
+        required: false
+        default: 'app-package'
 
 env:
   BUILD_OUTPUT_PATH: './output'
 
 jobs:
   build:
-    runs-on: ${{ inputs.os-platform }}
+    runs-on: ${{ inputs.os_platform }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -48,7 +52,7 @@ jobs:
       - name: Upload build artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: app-package
+          name: ${{ inputs.app_artifact_name }}
           path: ${{ env.BUILD_OUTPUT_PATH }}
           if-no-files-found: error
           retention-days: 1

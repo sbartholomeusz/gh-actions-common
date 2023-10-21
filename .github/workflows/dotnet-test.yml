@@ -16,20 +16,15 @@ on:
         description: 'Path to project or solution e.g. "./my-solution.sln"'
         required: false
         default: '.'
-      os-platform:
+      os_platform:
         type: string
-        description: 'Operating system platform e.g. "windows-latest"'
+        description: 'Operating system platform e.g. "windows-latest". See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.'
         required: false
         default: 'ubuntu-latest'
-      app_artifact_name:
-        type: string
-        description: 'Name of the artifact containing the application package'
-        required: false
-        default: 'app-package'
 
 jobs:
   run-tests:
-    runs-on: ${{ inputs.os-platform }}
+    runs-on: ${{ inputs.os_platform }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
