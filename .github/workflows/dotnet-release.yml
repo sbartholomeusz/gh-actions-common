@@ -14,7 +14,7 @@ env:
   BUILD_OUTPUT_PATH: './output'
 
 jobs:
-  build:
+  release:
     runs-on: ubuntu-latest
     # permissions:
     #   # Required to publish release artifacts
@@ -22,6 +22,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          # https://github.com/PaulHatch/semantic-version#important-note-regarding-the-checkout-action
+          fetch-depth: 0
 
       - uses: paulhatch/semantic-version@8d3552d38408b608e90e76237a2a5ac9fe524d04  # v5.3.0
         with:
