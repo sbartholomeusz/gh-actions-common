@@ -16,9 +16,9 @@ env:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:
-      # Required to publish release artifacts
-      contents: write
+    # permissions:
+    #   # Required to publish release artifacts
+    #   contents: write
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
