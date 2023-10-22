@@ -27,6 +27,7 @@ jobs:
           fetch-depth: 0
 
       - uses: paulhatch/semantic-version@8d3552d38408b608e90e76237a2a5ac9fe524d04  # v5.3.0
+        id: sem-ver
         with:
           # The prefix to use to identify tags
           tag_prefix: "v"
@@ -54,6 +55,13 @@ jobs:
           enable_prerelease_mode: false
           # If enabled, diagnostic information will be added to the action output.
           debug: false
+
+      - name: Publish release
+        shell: bash
+        run: |
+          gh release create ${{ steps.sem-ver.outputs.version }} --title ${{ steps.sem-ver.outputs.version }} --generate-notes
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
 
       # - name: Publish release
       #   shell: bash
