@@ -62,11 +62,3 @@ jobs:
           gh release create ${{ steps.sem-ver.outputs.version }} --title ${{ steps.sem-ver.outputs.version }} --generate-notes
         env:
           GITHUB_TOKEN: ${{ github.token }}
-
-      # - name: Publish release
-      #   shell: bash
-      #   run: |
-      #     version=v$(date +'%-Y.%-m.%-d').${{ github.run_number }}
-      #     gh release create ${version} --title ${version} --generate-notes
-      #   env:
-      #     GITHUB_TOKEN: ${{ github.token }}
