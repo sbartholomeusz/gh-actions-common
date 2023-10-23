@@ -1,5 +1,7 @@
 # gh-actions-common
 
+![Banner](/docs/git-repo-banner.png?raw=true "")
+
 ## Overview
 Collection of common reusable GitHub Action workflows:
 
