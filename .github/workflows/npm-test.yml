@@ -1,0 +1,48 @@
+# 
+# Purpose: Run npm tests
+#
+
+name: npm-test
+
+on:
+  workflow_call:
+    inputs:
+      node_version:
+        type: string
+        description: 'Required node version e.g. "16"'
+        required: true
+      source_code_path:
+        type: string
+        description: 'Path to source code e.g. "src"'
+        required: true
+      os_platform:
+        type: string
+        description: 'Operating system platform e.g. "windows-latest". See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.'
+        required: false
+        default: 'ubuntu-latest'
+
+env:
+  BUILD_OUTPUT_PATH: './output'
+
+jobs:
+  build:
+    runs-on: ${{ inputs.os_platform }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: 'Install node'
+        uses: actions/setup-node@v3
+        with:
+         node-version: ${{ inputs.node_version }}
+
+      - name: 'Fetch dependencies'
+        run: npm ci
+
+      - name: 'Build'
+        run: npm run build
+        working-directory: ${{ inputs.source_code_path }}
+
+      - name: 'Test'
+        run: npm test -- --watch=false --browsers=ChromeHeadless
+        working-directory: ${{ inputs.source_code_path }}
