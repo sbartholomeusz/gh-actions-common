@@ -64,3 +64,29 @@ permissions:
   contents: write
 uses: sbartholomeusz/gh-actions-common/.github/workflows/dotnet-release.yml@v1
 ```
+
+### npm-build
+```yaml
+uses: sbartholomeusz/gh-actions-common/.github/workflows/npm-build.yml@v1
+with:
+  # Required node version
+  node_version: '16'
+  # Path to source code
+  path: 'src'
+  # Operating system platform - defaults to 'ubuntu-latest'
+  # See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.
+  os_platform: 'ubuntu-latest'
+```
+
+### npm-test
+```yaml
+uses: sbartholomeusz/gh-actions-common/.github/workflows/npm-test.yml@v1
+with:
+  # Required node version
+  node_version: '16'
+  # Path to source code
+  path: 'src'
+  # Operating system platform - defaults to 'ubuntu-latest'
+  # See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.
+  os_platform: 'ubuntu-latest'
+```
