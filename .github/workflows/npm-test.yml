@@ -11,7 +11,7 @@ on:
         type: string
         description: 'Required node version e.g. "16"'
         required: true
-      source_code_path:
+      path:
         type: string
         description: 'Path to source code e.g. "src"'
         required: true
@@ -41,8 +41,8 @@ jobs:
 
       - name: 'Build'
         run: npm run build
-        working-directory: ${{ inputs.source_code_path }}
+        working-directory: ${{ inputs.path }}
 
       - name: 'Test'
         run: npm test -- --watch=false --browsers=ChromeHeadless
-        working-directory: ${{ inputs.source_code_path }}
+        working-directory: ${{ inputs.path }}
