@@ -20,7 +20,7 @@ with:
   # Required dotnet version
   dotnet_version: '7.0.x'
   # Path to project 
-  project_path: 'src/my-project.csproj'
+  project_path: './src/my-project.csproj'
   # Operating system platform - defaults to 'ubuntu-latest'
   # See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.
   os_platform: 'ubuntu-latest'
@@ -35,7 +35,7 @@ with:
   # Required dotnet version
   dotnet_version: '7.0.x'
   # Path to solution or project
-  path: 'src/my-solution.sln'
+  path: './src/my-solution.sln'
   # Operating system platform - defaults to 'ubuntu-latest'
   # See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.
   os_platform: 'ubuntu-latest'
@@ -52,7 +52,7 @@ with:
   # Required dotnet version
   dotnet_version: '7.0.x'
   # Path to the source code
-  path: 'src'
+  path: './src'
   # Operating system platform - defaults to 'ubuntu-latest'
   # See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.
   os_platform: 'ubuntu-latest'
@@ -72,7 +72,7 @@ with:
   # Required node version
   node_version: '16'
   # Path to source code
-  path: 'src'
+  path: './src'
   # Operating system platform - defaults to 'ubuntu-latest'
   # See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.
   os_platform: 'ubuntu-latest'
@@ -85,7 +85,7 @@ with:
   # Required node version
   node_version: '16'
   # Path to source code
-  path: 'src'
+  path: './src'
   # Operating system platform - defaults to 'ubuntu-latest'
   # See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.
   os_platform: 'ubuntu-latest'
