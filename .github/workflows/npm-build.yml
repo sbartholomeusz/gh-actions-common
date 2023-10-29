@@ -43,6 +43,7 @@ jobs:
 
       - name: 'Fetch dependencies'
         run: npm ci
+        working-directory: ${{ inputs.path }}
 
       - name: 'Build'
         run: npm run build
