@@ -10,7 +10,11 @@ Collection of common reusable GitHub Action workflows:
 | `.github/workflows/dotnet-build` | Builds dotnet code and uploads build artifacts. |
 | `.github/workflows/dotnet-test` | Runs dotnet tests. |
 | `.github/workflows/dotnet-code-ql` | Runs automated dotnet code quality checks. |
-| `.github/workflows/dotnet-test` | Runs automated dotnet code quality checks. |
+| `.github/workflows/dotnet-release.yml` | Create GitHub Release. |
+| `.github/workflows/npm-build` | Builds npm code. |
+| `.github/workflows/npm-test` | Runs npm tests. |
+| `.github/workflows/javascript-code-ql.yml` | Runs automated javascript code quality checks. |
+| `.github/workflows/typescript-code-ql.yml` | Runs automated typescript code quality checks. |
 
 ## Usage Notes
 ### dotnet-build
@@ -84,6 +88,28 @@ uses: sbartholomeusz/gh-actions-common/.github/workflows/npm-test.yml@v1
 with:
   # Required node version
   node_version: '16'
+  # Path to source code
+  path: './src'
+  # Operating system platform - defaults to 'ubuntu-latest'
+  # See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.
+  os_platform: 'ubuntu-latest'
+```
+
+### javascript-code-ql
+```yaml
+uses: sbartholomeusz/gh-actions-common/.github/workflows/javascript-code-ql.yml@v1
+with:
+  # Path to source code
+  path: './src'
+  # Operating system platform - defaults to 'ubuntu-latest'
+  # See https://docs.github.com/en/actions/using-jobs/choosing-the-runner-for-a-job#choosing-github-hosted-runners.
+  os_platform: 'ubuntu-latest'
+```
+
+### typescript-code-ql
+```yaml
+uses: sbartholomeusz/gh-actions-common/.github/workflows/typescript-code-ql.yml@v1
+with:
   # Path to source code
   path: './src'
   # Operating system platform - defaults to 'ubuntu-latest'
