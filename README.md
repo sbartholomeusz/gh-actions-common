@@ -11,8 +11,8 @@ Collection of common reusable GitHub Action workflows:
 | `.github/workflows/dotnet-test` | Runs dotnet tests. |
 | `.github/workflows/dotnet-code-ql` | Runs automated dotnet code quality checks. |
 | `.github/workflows/dotnet-release.yml` | Create GitHub Release. |
-| `.github/workflows/npm-build` | Builds npm code. |
-| `.github/workflows/npm-test` | Runs npm tests. |
+| `.github/workflows/npm-build.yml` | Builds npm code. |
+| `.github/workflows/npm-test.yml` | Runs npm tests. |
 | `.github/workflows/javascript-code-ql.yml` | Runs automated javascript code quality checks. |
 | `.github/workflows/typescript-code-ql.yml` | Runs automated typescript code quality checks. |
 
